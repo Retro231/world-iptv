@@ -24,6 +24,7 @@ import BannerAd from '../components/adComponents/BannerAd';
 import {globalColors, globalVariables} from '../global';
 import CountryListScreen from './CountryListScreen';
 import {ShowAppContext} from '../Context/ShowAppCondex';
+import {InterstitialAdManager} from 'react-native-fbads';
 const Home = () => {
   const navigation = useNavigation();
   const {showMainContent, setShowMainContent} = useContext(ShowAppContext);
@@ -57,6 +58,13 @@ const Home = () => {
 
   const handleCountrySelect = data => {
     setCountryCode(data.code.toLowerCase());
+    // ad start
+    InterstitialAdManager.showAd(globalVariables.InterstitialAdId)
+      .then(didClick => {})
+      .catch(error => {
+        console.log('err', error);
+      });
+    // ad end
     navigation.navigate('CategoryDetailsScreen', {
       countryCode: data.code.toLowerCase(),
       countryName: data.name,
