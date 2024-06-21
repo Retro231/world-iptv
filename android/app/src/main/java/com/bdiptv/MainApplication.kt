@@ -1,4 +1,4 @@
-package com.iptvusa.iptvapp
+package com.worldiptv.app
 
 import android.app.Application
 import com.facebook.react.PackageList
