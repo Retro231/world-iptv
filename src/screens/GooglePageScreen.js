@@ -237,7 +237,7 @@ const GooglePageScreen = () => {
                 </View>
                 <Button
                   style={styles.modalButton}
-                  color={'#003A53'}
+                  color={globalColors.secondaryBackground}
                   onPress={goToNextPage}
                   title="Save Playlist"></Button>
               </>

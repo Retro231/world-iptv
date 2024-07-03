@@ -134,9 +134,13 @@ const CategoryDetailsScreen = () => {
   const pullMe = async () => {
     setRefresh(true);
     // /do something...
+    parseChannels();
+
     setRefresh(false);
   };
-
+  const handleRefresh = () => {
+    parseChannels();
+  };
   const backAction = () => {
     setMainList([]);
     navigation.goBack();
@@ -159,7 +163,11 @@ const CategoryDetailsScreen = () => {
 
   return (
     <View style={{flex: 1}}>
-      <Header title={`${flag} ${countryName}`} goBackTo={'oneStep'} />
+      <Header
+        title={`${flag} ${countryName}`}
+        goBackTo={'oneStep'}
+        refreshData={handleRefresh}
+      />
       <View style={styles.categorayHead}>
         {headItem.map((item, index) => (
           <TouchableOpacity

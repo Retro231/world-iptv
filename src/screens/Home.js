@@ -39,7 +39,7 @@ const Home = () => {
   };
 
   const handleRefresh = () => {
-    // checkPlaylist(countryCode);3
+    checkShowApp();
   };
 
   const checkShowApp = async () => {
@@ -140,23 +140,6 @@ const Home = () => {
       {showMainContent && !loading && (
         <CountryListScreen onCountrySelect={handleCountrySelect} />
       )}
-      {/* loading indicatior start */}
-      {loading && (
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}>
-          <ActivityIndicator
-            size="large"
-            color={globalColors.primaryBackground}
-          />
-        </View>
-      )}
-      {/* loading indicatior end */}
-
       {/* banner ad */}
       <BannerAd placement_id={globalVariables.BannerAdId} />
     </SafeAreaView>

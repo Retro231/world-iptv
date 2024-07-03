@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Dimensions,
   FlatList,
   RefreshControl,
@@ -52,11 +53,15 @@ const CountryListScreen = ({onCountrySelect}) => {
   const [countries, setCounties] = useState([]);
   const [searchedCountries, setSearchedCountries] = useState([]);
   const [favChannels, setFavChannels] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getList = async () => {
+    setLoading(true);
     const list = await getCountryList();
     setCounties(list);
     setSearchedCountries(list);
+    setLoading(false);
   };
   useEffect(() => {
     getList();
@@ -122,6 +127,13 @@ const CountryListScreen = ({onCountrySelect}) => {
     setActive(id);
   };
 
+  const handleRefresh = () => {
+    setRefresh(true);
+    getList();
+    setData([]);
+    setRefresh(false);
+  };
+
   return (
     <View style={{flex: 1}}>
       <View style={styles.categorayHead}>
@@ -155,7 +167,7 @@ const CountryListScreen = ({onCountrySelect}) => {
         ))}
       </View>
       <View style={{flex: 1, alignItems: 'center'}}>
-        {searchedCountries?.length > 0 && (
+        {searchedCountries?.length > 0 && !loading && (
           <FlatList
             data={active === 1 ? searchedCountries : favChannels}
             numColumns={2}
@@ -200,11 +212,27 @@ const CountryListScreen = ({onCountrySelect}) => {
               )
             }
             keyExtractor={(item, index) => index}
-            // refreshControl={
-            //   <RefreshControl refreshing={refresh} onRefresh={() => {}} />
-            // }
+            refreshControl={
+              <RefreshControl refreshing={refresh} onRefresh={handleRefresh} />
+            }
           />
         )}
+        {/* loading indicatior start */}
+        {loading && (
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'row',
+            }}>
+            <ActivityIndicator
+              size="large"
+              color={globalColors.primaryBackground}
+            />
+          </View>
+        )}
+        {/* loading indicatior end */}
       </View>
     </View>
   );
