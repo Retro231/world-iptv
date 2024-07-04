@@ -35,7 +35,13 @@ function MyCustomDrawer(props) {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        {text: 'Exit', onPress: () => BackHandler.exitApp()},
+        {
+          text: 'Exit',
+          onPress: () => {
+            BackHandler.exitApp();
+            navigation.dispatch(DrawerActions.closeDrawer());
+          },
+        },
       ],
       {cancelable: false},
     );

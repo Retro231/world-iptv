@@ -199,10 +199,12 @@ const styles = StyleSheet.create({
     backgroundColor: globalColors.primaryBackground,
     alignItems: 'center',
     position: 'relative',
+    width: Dimensions.get('screen').width,
   },
   headerLeft: {
     flexDirection: 'row',
     gap: 20,
+    width: '70%',
   },
   logo: {
     fontSize: 18,
@@ -214,6 +216,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 10,
+    width: '30%',
   },
   menu: {
     position: 'absolute',

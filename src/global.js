@@ -1,6 +1,13 @@
+// const globalColors = {
+//   primaryBackground: '#039EBD', // New background color
+//   secondaryBackground: '#003A53',
+//   primaryText: '#fff',
+//   secondaryText: '#000',
+// };
+
 const globalColors = {
-  primaryBackground: '#039EBD', // New background color
-  secondaryBackground: '#003A53',
+  primaryBackground: '#2159d1', // New background color
+  secondaryBackground: '#0e2f75',
   primaryText: '#fff',
   secondaryText: '#000',
 };
